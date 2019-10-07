@@ -6,8 +6,13 @@ import { Repository, EntityRepository } from 'typeorm';
 export class UserRepository extends Repository<User> {
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
     const { username, password } = authCredentialsDto;
+
+    const exists = this.findOne({ username });
+
+    if (exists) {
+    }
     const user = new User();
-    user.usermane = username;
+    user.username = username;
     user.password = password;
     await user.save();
   }
