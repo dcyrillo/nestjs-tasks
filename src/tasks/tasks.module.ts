@@ -6,12 +6,7 @@ import { TaskRepository } from './task.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [
-    TasksModule,
-    TypeOrmModule.forFeature([TaskRepository]),
-    ,
-    AuthModule,
-  ],
+  imports: [TypeOrmModule.forFeature([TaskRepository]), AuthModule],
   controllers: [TasksController],
   providers: [TasksService],
 })
